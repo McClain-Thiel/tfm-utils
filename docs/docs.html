@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docs &mdash; tfm_utils 0.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> tfm_utils
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">tfm_utils</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Docs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/docs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="docs">
+<h1>Docs<a class="headerlink" href="#docs" title="Permalink to this headline"></a></h1>
+<section id="scientific-functions">
+<h2>Scientific Functions<a class="headerlink" href="#scientific-functions" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tfm_utils.create_matrix">
+<span class="sig-prename descclassname"><span class="pre">tfm_utils.</span></span><span class="sig-name descname"><span class="pre">create_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.25,</span> <span class="pre">0.25,</span> <span class="pre">0.25,</span> <span class="pre">0.25]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'counts'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nat'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tfm_utils/tfmp.html#create_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tfm_utils.create_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>From a JASPAR formatted motif matrix count file, create a Matrix object.</p>
+<p>This function also converts it to a log-odds (position weight) matrix if necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix_file</strong> (<em>str</em>) – White-space delimited string of row-concatenated motif matrix.</p></li>
+<li><p><strong>bg</strong> (<em>list of floats</em>) – Background nucleotide frequencies for [A, C, G, T].</p></li>
+<li><p><strong>mat_type</strong> (<em>str</em>) – Type of motif matrix provided. Options are: “counts”, “pfm”, “pwm”.
+“counts” is for raw count matrices for each base at each position.
+“pfm” is for position frequency matrices (frequencies already calculated.
+“pwm” is for position weight matrices (also referred to as position-specific scoring matrices.)</p></li>
+<li><p><strong>log_type</strong> (<em>str</em>) – Base to use for log. Default is to use the natural log. “log2” is the other option.
+This will affect the scores and p-values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Matrix in pwm format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>m (tfm_utils Matrix)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tfm_utils.read_matrix">
+<span class="sig-prename descclassname"><span class="pre">tfm_utils.</span></span><span class="sig-name descname"><span class="pre">read_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.25,</span> <span class="pre">0.25,</span> <span class="pre">0.25,</span> <span class="pre">0.25]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'counts'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nat'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tfm_utils/tfmp.html#read_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tfm_utils.read_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>From a string of space-delimited counts create a Matrix object.</p>
+<p>Break the string into 4 rows corresponding to A, C, G, and T.
+This function also converts it to a log-odds (position weight) matrix if necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix_file</strong> (<em>str</em>) – White-space delimited string of row-concatenated motif matrix.</p></li>
+<li><p><strong>bg</strong> (<em>list of floats</em>) – Background nucleotide frequencies for [A, C, G, T].</p></li>
+<li><p><strong>mat_type</strong> (<em>str</em>) – Type of motif matrix provided. Options are: “counts”, “pfm”, “pwm”.
+“counts” is for raw count matrices for each base at each position.
+“pfm” is for position frequency matrices (frequencies already calculated).
+“pwm” is for position weight matrices (also referred to as position-specific scoring matrices.)</p></li>
+<li><p><strong>log_type</strong> (<em>str</em>) – Base to use for log. Default is to use the natural log. “log2” is the other option.
+This will affect the scores and p-values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Matrix in pwm format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>m (tfm_utils Matrix)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tfm_utils.score2pval">
+<span class="sig-prename descclassname"><span class="pre">tfm_utils.</span></span><span class="sig-name descname"><span class="pre">score2pval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">req_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mem_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tfm_utils/tfmp.html#score2pval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tfm_utils.score2pval" title="Permalink to this definition"></a></dt>
+<dd><p>Determine the p-value for a given score for a specific motif PWM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>tfm_utils Matrix</em>) – Matrix in pwm format.</p></li>
+<li><p><strong>req_score</strong> (<em>float</em>) – Requested score for which to determine the p-value.</p></li>
+<li><p><strong>mem_thresh</strong> (<em>float</em>) – Memory in GBs to remain free to system.
+Once passed, the closest p-val approximation will be returned
+instead of the exact p-val. Should only occur rarely with very
+long and degenerate motifs. Used to help ensure the system
+won’t run out of memory due to these outliers. This is only
+calculated after each pass, each of which is more time and memory
+intensive than the last, so changing this value isn’t recommended
+unless accuracy out to the 8th decimal place is really necessary.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The calculated p-value corresponding to the score.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pv (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tfm_utils.pval2score">
+<span class="sig-prename descclassname"><span class="pre">tfm_utils.</span></span><span class="sig-name descname"><span class="pre">pval2score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mem_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tfm_utils/tfmp.html#pval2score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tfm_utils.pval2score" title="Permalink to this definition"></a></dt>
+<dd><p>Determine the score for a given p-value for a specific motif PWM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>tfm_utils Matrix</em>) – Matrix in pwm format.</p></li>
+<li><p><strong>pval</strong> (<em>float</em>) – p-value for which to determine the score.</p></li>
+<li><p><strong>mem_thresh</strong> (<em>float</em>) – Memory in GBs to remain free to system.
+Once passed, the closest p-val approximation will be returned
+instead of the exact p-val. Should only occur rarely with very
+long and degenerate motifs. Used to help ensure the system
+won’t run out of memory due to these outliers. This is only
+calculated after each pass, each of which is more time and memory
+intensive than the last, so changing this value isn’t recommended
+unless accuracy out to the 8th decimal place is really necessary.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The calculated score corresponding to the p-value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>score (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="utility-functions">
+<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tfm_utils.toPWM">
+<span class="sig-prename descclassname"><span class="pre">tfm_utils.</span></span><span class="sig-name descname"><span class="pre">toPWM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tfm_utils/tfmp.html#toPWM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tfm_utils.toPWM" title="Permalink to this definition"></a></dt>
+<dd><p>Converts DFs in PPM (position probability matrix) or PCM (position count matrix) and forces then
+to PWM (position weight matrix format.</p>
+<div class="math">
+<p><span class="math">\sum_{i=1}^{\infty} x_{i}</span></p>
+</div><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Takes a dataframe with appropriate columns or rows in any of the following forms</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tfm_utils.orient_df">
+<span class="sig-prename descclassname"><span class="pre">tfm_utils.</span></span><span class="sig-name descname"><span class="pre">orient_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tfm_utils/tfmp.html#orient_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tfm_utils.orient_df" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tfm_utils.df_to_matrix">
+<span class="sig-prename descclassname"><span class="pre">tfm_utils.</span></span><span class="sig-name descname"><span class="pre">df_to_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tfm_utils/tfmp.html#df_to_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tfm_utils.df_to_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a dataframe into the space delimited form required by the rest of the library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – A dataframe with the  PWM values in it. Must have columns with names “A’”, “C”, “T”, and “G” or rows with the same name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>All values of the df in the correct order and space delimited</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>values (str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, McClain Thiel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
