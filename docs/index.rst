@@ -33,7 +33,7 @@ instead or old school R or something.
 
 ``tfm_utls`` allows this functionality to be easily utilized within a Python script, module, or package.
 
-See full documentation and use examples `here <http://pytfmpval.readthedocs.io/en/latest/>`_.
+See full documentation and use examples `here <https://mcclain-thiel.github.io/tfm-utils>`_.
 
 .. toctree::
    :maxdepth: 2
@@ -48,7 +48,7 @@ Contribute
 
 Any and all contributions are welcome. Bug reporting via the `Issue Tracker <https://github.com/j-andrews7/pytfmpval/issues>`_ is much appeciated. Here's how to contribute:
 
-1. Fork the `pytfmpval repository <https://github.com/j-andrews7/pytfmpval>`_ on github (see `forking help <https://help.github.com/articles/fork-a-repo/>`_).
+1. Fork  `this repo <https://github.com/j-andrews7/pytfmpval>`_ on github (see `forking help <https://help.github.com/articles/fork-a-repo/>`_).
 
 2. Make your changes/fixes/improvements locally.
 

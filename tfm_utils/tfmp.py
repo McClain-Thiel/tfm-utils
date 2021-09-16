@@ -37,6 +37,7 @@ from math import ceil
 import os, sys
 import pandas as pd
 import numpy as np
+import ctypes
 
 
 def create_matrix(matrix_file, bg=[0.25, 0.25, 0.25, 0.25], mat_type="counts", log_type="nat"):
@@ -102,7 +103,7 @@ def toPWM(df: pd.DataFrame):
         df =  df / df.sum(axis=0)
         return np.log2(df)
 
-    except ValueError:
+    except TypeError:
         pass
 
     # rule 2: if any of the values are negative its likely already a PWM
@@ -173,7 +174,7 @@ def orient_df(df):
         raise ValueError("Columns or rows of df must include all of 'A', 'C', 'G', 'T'.")
 
 
-def df_to_matrix(df):
+def df_to_matrix(df, bg = [.25, .25, .25, .25]):
     """
     Converts a dataframe into the space delimited form required by the rest of the library.
 
@@ -188,15 +189,16 @@ def df_to_matrix(df):
     column_names =[x.upper() for x in  df.columns if type(x) == str]
     rows = [x.upper() for x in  df.index if type(x) == str]
     if "A" in column_names and "C" in column_names and "G" in column_names and "T" in column_names:
-        values = np.append([df[x].values for x in ["A", "C", "G", "T"]])
+        values = np.array([df[x].values for x in ["A", "C", "G", "T"]]).flatten()
 
     elif "A" in rows and "C" in rows and "G" in rows and "T" in rows:
-        values = np.append([df.loc[x].values for x in ["A", "C", "G", "T"]])
+        values = np.array([df.loc[x].values for x in ["A", "C", "G", "T"]]).flatten()
 
     else:
         raise ValueError("DataFrame must have all of ['A', 'C' 'T' 'G'] in the column names or row index")
 
-    return values
+    string =  ' '.join([str(x) for x in values])
+    return read_matrix(string, bg)
 
 
 def score2pval(matrix, req_score, mem_thresh=2.0):
@@ -219,6 +221,10 @@ def score2pval(matrix, req_score, mem_thresh=2.0):
         pv (float): The calculated p-value corresponding to the score.
     """
 
+    if isinstance(matrix, pd.DataFrame):
+        matrix = toPWM(matrix)
+        matrix = df_to_matrix(matrix)
+
     mem_thresh = mem_thresh * 1000 * 1024 * 1024
     granularity = 0.1
     max_granularity = 1e-10
@@ -227,8 +233,15 @@ def score2pval(matrix, req_score, mem_thresh=2.0):
     pv = tfm.doublep()
     ppv = tfm.doublep()
 
+    pv.assign(.001)
+    ppv.assign(.001)
+
     while granularity > max_granularity:
         matrix.computesIntegerMatrix(granularity)
+
+        if np.isnan(matrix.errorMax):
+            matrix.errorMax = 0.01 #check if this makes any sense
+
         max_s = int(req_score * matrix.granularity + matrix.offset + matrix.errorMax + 1)
         min_s = int(req_score * matrix.granularity + matrix.offset - matrix.errorMax - 1)
         score = int(req_score * matrix.granularity + matrix.offset)
@@ -268,6 +281,11 @@ def pval2score(matrix, pval, mem_thresh=2.0):
     Returns:
         score (float): The calculated score corresponding to the p-value.
     """
+    if isinstance(matrix, pd.DataFrame):
+        matrix = toPWM(matrix)
+        matrix = df_to_matrix(matrix)
+
+
     mem_thresh = mem_thresh * 1000 * 1024 * 1024
     init_granularity = 0.1
     max_granularity = 1e-10
@@ -275,13 +293,24 @@ def pval2score(matrix, pval, mem_thresh=2.0):
 
     pv = tfm.doublep()  # Initialize as a c++ double.
     ppv = tfm.doublep()
+
+    pv.assign(.001)
+    ppv.assign(.001)
+
     matrix.computesIntegerMatrix(init_granularity)
+
+    if np.isnan(matrix.errorMax):
+        matrix.errorMax = .001
+
     max_s = int(matrix.maxScore + ceil(matrix.errorMax + 0.5))
     min_s = int(matrix.minScore)
     granularity = init_granularity
 
     while granularity > max_granularity:
         matrix.computesIntegerMatrix(granularity)
+
+        if np.isnan(matrix.errorMax):
+            matrix.errorMax = .001
 
         score = matrix.lookForScore(min_s, max_s, pval, pv, ppv)
 

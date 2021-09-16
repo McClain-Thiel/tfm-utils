@@ -1,13 +1,16 @@
 Overview
 ===========
 
-.. image:: https://travis-ci.org/j-andrews7/pytfmpval.png?branch=master
+..
+    image:: https://travis-ci.org/j-andrews7/pytfmpval.png?branch=master
     :target: https://travis-ci.org/j-andrews7/pytfmpval
 
-.. image:: https://badge.fury.io/py/pytfmpval.svg?style=flat
+..
+    image:: https://badge.fury.io/py/pytfmpval.svg?style=flat
     :target: http://badge.fury.io/py/pytfmpval
 
-.. image:: https://readthedocs.org/projects/pytfmpval/badge/?version=latest
+..
+    image:: https://readthedocs.org/projects/pytfmpval/badge/?version=latest
     :target: http://pytfmpval.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
@@ -25,12 +28,12 @@ on:
 2. modernizing the interface a bit
     2.1. This primarily includes adding support for pandas and numpy arrays as opposed to purely white space delimited lists and the like
 
-This should make everyhting better to use and make it feel like you are writing python code
+This should make everything better to use and make it feel like you are writing python code
 instead or old school R or something.
 
 ``tfm_utls`` allows this functionality to be easily utilized within a Python script, module, or package.
 
-See full documentation and use examples `here <http://pytfmpval.readthedocs.io/en/latest/>`_.
+See full documentation and use examples `here <https://mcclain-thiel.github.io/tfm-utils>`_.
 
 .. toctree::
    :maxdepth: 2
@@ -39,16 +42,13 @@ See full documentation and use examples `here <http://pytfmpval.readthedocs.io/e
    examples
    docs
 
-A Simple Example
---------------------------
-
 
 Contribute
 ---------------
 
 Any and all contributions are welcome. Bug reporting via the `Issue Tracker <https://github.com/j-andrews7/pytfmpval/issues>`_ is much appeciated. Here's how to contribute:
 
-1. Fork the `pytfmpval repository <https://github.com/j-andrews7/pytfmpval>`_ on github (see `forking help <https://help.github.com/articles/fork-a-repo/>`_).
+1. Fork  `this repo <https://github.com/j-andrews7/pytfmpval>`_ on github (see `forking help <https://help.github.com/articles/fork-a-repo/>`_).
 
 2. Make your changes/fixes/improvements locally.
 
