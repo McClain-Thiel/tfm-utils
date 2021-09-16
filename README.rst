@@ -1,13 +1,16 @@
 tfm_utils
 ===========
 
-.. image:: https://travis-ci.org/j-andrews7/pytfmpval.png?branch=master
+..
+    image:: https://travis-ci.org/j-andrews7/pytfmpval.png?branch=master
     :target: https://travis-ci.org/j-andrews7/pytfmpval
 
-.. image:: https://badge.fury.io/py/pytfmpval.svg?style=flat
+..
+    image:: https://badge.fury.io/py/pytfmpval.svg?style=flat
     :target: http://badge.fury.io/py/pytfmpval
 
-.. image:: https://readthedocs.org/projects/pytfmpval/badge/?version=latest
+..
+    image:: https://readthedocs.org/projects/pytfmpval/badge/?version=latest
     :target: http://pytfmpval.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
@@ -28,14 +31,14 @@ on:
 This should make everyhting better to use and make it feel like you are writing python code
 instead or old school R or something.
 
-``pytfmpval`` allows this functionality to be easily utilized within a Python script, module, or package.
+``tfm_utils`` allows this functionality to be easily utilized within a Python script, module, or package.
 
-See full documentation and use examples `here <http://pytfmpval.readthedocs.io/en/latest/>`_.
+See full documentation and use examples `here <https://mcclain-thiel.github.io/tfm-utils/>`_.
 
 Installation
 ---------------
 
-pytfmpval is on PyPI, so you can install via ``pip`` easily::
+tfm_utils is on PyPI, so you can install via ``pip`` easily::
 
     pip install tfm_utils
 
@@ -136,9 +139,9 @@ like a pretty open license so I assume this is all chill.
 Contribute
 ---------------
 
-Any and all contributions are welcome. Bug reporting via the `Issue Tracker <github.com/j-andrews7/pytfmpval/issues>`_ is much appeciated. Here's how to contribute:
+Any and all contributions are welcome. Bug reporting via the `Issue Tracker <https://github.com/McClain-Thiel/tfm-utils/issues>`_ is much appreciated. Here's how to contribute:
 
-1. Fork the `pytfmpval repository <https://github.com/j-andrews7/pytfmpval>`_ on github (see `forking help <https://help.github.com/articles/fork-a-repo/>`_).
+1. Fork the `pytfmpval repository <https://github.com/McClain-Thiel/tfm-utils>`_ on github (see `forking help <https://help.github.com/articles/fork-a-repo/>`_).
 
 2. Make your changes/fixes/improvements locally.
 
